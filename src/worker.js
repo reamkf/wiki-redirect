@@ -8,19 +8,8 @@ function getJSTDate(date) {
 	// JSTのオフセット（+9時間）を適用
 	const jstOffset = 9 * 60 * 60 * 1000;
 
-	// 新しいDateオブジェクトを作成（UTCベース）
-	const jstDate = new Date(utc + jstOffset);
-
-	// UTCでの年月日時分秒を使って新しいDateオブジェクトを作成
-	return new Date(Date.UTC(
-		jstDate.getUTCFullYear(),
-		jstDate.getUTCMonth(),
-		jstDate.getUTCDate(),
-		jstDate.getUTCHours(),
-		jstDate.getUTCMinutes(),
-		jstDate.getUTCSeconds(),
-		jstDate.getUTCMilliseconds()
-	));
+	// 新しいDateオブジェクトを作成（JSTベース）
+	return new Date(utc + jstOffset);
 }
 
 function calculateSeasonCount(dateTimeJST) {
