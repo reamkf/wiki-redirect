@@ -1,0 +1,7 @@
+name = "dojo-redirect"
+main = "src/worker.js"
+compatibility_date = "2025-01-12"
+workers_dev = true
+
+[observability]
+enabled = true
