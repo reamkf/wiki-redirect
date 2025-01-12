@@ -27,17 +27,19 @@ https://dojo-redirect.reamkf-strcn.workers.dev/
 ## 開発環境のセットアップ
 `npm`の代わりに`pnpm`も使用可能です。
 
-1. 必要なパッケージをインストール:
+1. Node.jsをインストール
+
+2. 必要なパッケージをインストール:
 ```bash
 npm install
 ```
 
-2. wranglerをインストール:
+3. wranglerをインストール:
 ```bash
 npm install -g wrangler
 ```
 
-3. wranglerでログイン:
+4. wranglerでログイン:
 ```bash
 wrangler login
 ```
