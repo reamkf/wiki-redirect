@@ -3,13 +3,8 @@ const BASE_DATE = new Date('2020-08-01T00:00:00+09:00');  // JST
 const BASE_COUNT = 2;
 
 function getJSTDate(date) {
-	// UTCの時刻を取得
-	const utc = date.getTime();
-	// JSTのオフセット（+9時間）を適用
-	const jstOffset = 9 * 60 * 60 * 1000;
-
-	// 新しいDateオブジェクトを作成（JSTベース）
-	return new Date(utc + jstOffset);
+	// UTCの日時文字列を取得し、明示的にJSTタイムゾーンを指定
+	return new Date(date.toLocaleString('en-US', { timeZone: 'Asia/Tokyo' }));
 }
 
 function calculateSeasonCount(dateTimeJST) {
