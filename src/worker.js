@@ -3,7 +3,24 @@ const BASE_DATE = new Date('2020-08-01T00:00:00+09:00');  // JST
 const BASE_COUNT = 2;
 
 function getJSTDate(date) {
-	return new Date(date.getTime() + (9 * 60 * 60 * 1000));  // UTC → JST
+	// UTCの時刻を取得
+	const utc = date.getTime();
+	// JSTのオフセット（+9時間）を適用
+	const jstOffset = 9 * 60 * 60 * 1000;
+
+	// 新しいDateオブジェクトを作成（UTCベース）
+	const jstDate = new Date(utc + jstOffset);
+
+	// UTCでの年月日時分秒を使って新しいDateオブジェクトを作成
+	return new Date(Date.UTC(
+		jstDate.getUTCFullYear(),
+		jstDate.getUTCMonth(),
+		jstDate.getUTCDate(),
+		jstDate.getUTCHours(),
+		jstDate.getUTCMinutes(),
+		jstDate.getUTCSeconds(),
+		jstDate.getUTCMilliseconds()
+	));
 }
 
 function calculateSeasonCount(dateTimeJST) {
@@ -25,9 +42,6 @@ function calculateSeasonCount(dateTimeJST) {
 }
 
 async function handleRequest(request, env) {
-	const url = new URL(request.url);
-	const originalPath = decodeURIComponent(url.pathname);
-
 	// 現在の日本時間を取得
 	const currentJST = getJSTDate(new Date());
 	const currentCount = calculateSeasonCount(currentJST);
