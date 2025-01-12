@@ -32,7 +32,17 @@ https://dojo-redirect.reamkf-strcn.workers.dev/
 npm install
 ```
 
-2. ローカル開発サーバーの起動:
+2. wranglerをインストール:
+```bash
+npm install -g wrangler
+```
+
+3. wranglerでログイン:
+```bash
+wrangler login
+```
+
+## ローカル開発サーバーの起動
 ```bash
 npm run dev
 ```
