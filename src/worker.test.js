@@ -5,12 +5,32 @@ describe('Worker のテスト', () => {
 	// 日付をモック化するためのヘルパー関数
 	function mockDate(isoDate) {
 		const mockDate = new Date(isoDate);
-		jest.spyOn(global, 'Date')
-			.mockImplementation(() => mockDate);
+		const originalDate = global.Date;
+		const mockTimestamp = mockDate.getTime();
+
+		// Date クラスをモック化
+		global.Date = class extends Date {
+			constructor(...args) {
+				if (args.length === 0) {
+					return mockDate;
+				}
+				return new originalDate(...args);
+			}
+
+			static now() {
+				return mockTimestamp;
+			}
+		};
+
+		// テスト後の後片付けのために元の Date を保存
+		global.Date.originalDate = originalDate;
 	}
 
 	afterEach(() => {
-		jest.restoreAllMocks();
+		// 元の Date に戻す
+		if (global.Date.originalDate) {
+			global.Date = global.Date.originalDate;
+		}
 	});
 
 	test('基準日（2020-08-01）のリダイレクト先が正しい', async () => {
