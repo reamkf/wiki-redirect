@@ -5,9 +5,13 @@
   "scripts": {
     "deploy": "wrangler deploy",
     "dev": "wrangler dev",
-    "start": "wrangler dev"
+    "start": "wrangler dev",
+    "test": "jest"
   },
   "devDependencies": {
-    "wrangler": "^3.60.3"
-  }
+    "wrangler": "^3.60.3",
+    "jest": "^29.7.0",
+    "@babel/preset-env": "^7.24.0"
+  },
+  "type": "module"
 }
