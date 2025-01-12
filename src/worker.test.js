@@ -120,4 +120,38 @@ describe('Worker のテスト', () => {
 			'https://seesaawiki.jp/kemono_friends3_5ch/d/%a5%b7%a1%bc%a5%b5%a1%bc%a5%d0%a5%eb%c6%bb%be%ec%a1%ca%a6%c22%2d28%a1%cb'
 		);
 	});
+
+	test('CPU処理時間が10ミリ秒以内であること', async () => {
+		mockDate('2024-03-01T00:00:00+09:00');
+		const request = new Request('https://example.com/');
+
+		const startTime = performance.now();
+		await worker.fetch(request, {});
+		const endTime = performance.now();
+
+		const executionTime = endTime - startTime;
+		expect(executionTime).toBeLessThan(10);
+		console.log(`実行時間: ${executionTime.toFixed(2)}ミリ秒`);
+	});
+
+	// 負荷テストとして連続実行時の処理時間も確認
+	test('100回連続実行しても各リクエストが10ミリ秒以内であること', async () => {
+		mockDate('2024-03-01T00:00:00+09:00');
+		const request = new Request('https://example.com/');
+
+		const executionTimes = [];
+		for (let i = 0; i < 100; i++) {
+			const startTime = performance.now();
+			await worker.fetch(request, {});
+			const endTime = performance.now();
+			executionTimes.push(endTime - startTime);
+		}
+
+		const maxExecutionTime = Math.max(...executionTimes);
+		const avgExecutionTime = executionTimes.reduce((a, b) => a + b, 0) / executionTimes.length;
+
+		expect(maxExecutionTime).toBeLessThan(10);
+		console.log(`最大実行時間: ${maxExecutionTime.toFixed(2)}ミリ秒`);
+		console.log(`平均実行時間: ${avgExecutionTime.toFixed(2)}ミリ秒`);
+	});
 });
