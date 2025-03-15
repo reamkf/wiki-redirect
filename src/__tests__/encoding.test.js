@@ -16,4 +16,12 @@ describe('encodeEUCJP', () => {
 		expect(encoded).toBe(original);
 		expect(decoded).toBe(original);
 	});
+
+	test('記号のエンコード', () => {
+		const original = '!@#$%^&*()_+-=[]{}|;:,.<>?/';
+		const encoded = encodeEUCJP(original);
+		const decoded = decodeEUCJP(encoded);
+		expect(encoded).toBe('%21%40%23%24%25%5e%26%2a%28%29%5f%2b%2d%3d%5b%5d%7b%7d%7c%3b%3a%2c.%3c%3e%3f/');
+		expect(decoded).toBe(original);
+	});
 });
