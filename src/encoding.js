@@ -17,17 +17,15 @@ export function encodeEUCJP(input) {
 	for (const byte of eucBytes) {
 		// URLエンコードのルールに従って変換
 		if (
-			(byte >= 0x30 && byte <= 0x39) || // 0-9
-			(byte >= 0x41 && byte <= 0x5A) || // A-Z
-			(byte >= 0x61 && byte <= 0x7A) || // a-z
-			byte === 0x2D || // -
-			byte === 0x2E || // .
-			byte === 0x5F || // _
-			byte === 0x7E    // ~
+			(byte >= 0x30 && byte <= 0x39) // 0-9
+			|| (byte >= 0x41 && byte <= 0x5A) // A-Z
+			|| (byte >= 0x61 && byte <= 0x7A) // a-z
+			|| byte === 0x2E // .
+			|| byte === 0x2F // /
 		) {
 			encoded += String.fromCharCode(byte);
 		} else {
-			encoded += "%" + byte.toString(16).toUpperCase().padStart(2, "0");
+			encoded += "%" + byte.toString(16).toLowerCase().padStart(2, "0");
 		}
 	}
 
