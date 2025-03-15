@@ -1,4 +1,3 @@
-import { jest } from '@jest/globals';
 import worker from './worker';
 
 describe('Worker のテスト', () => {

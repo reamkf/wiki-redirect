@@ -1,7 +1,7 @@
-# dojo-redirect
+# wiki-redirect
 
 シーサーバル道場のWikiページへの自動リダイレクトを行うCloudflare Workerアプリケーションです。<br>
-https://dojo-redirect.reamkf-strcn.workers.dev/
+https://wiki-redirect.reamkf-strcn.workers.dev/
 
 ## 機能概要
 

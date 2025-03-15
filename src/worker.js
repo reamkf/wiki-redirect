@@ -1,59 +1,37 @@
-// 基準となる設定
-const BASE_DATE = new Date('2020-08-01T00:00:00Z');  // UTC
-const BASE_COUNT = 2;
-
-function getJSTDate(date) {
-	// UTCの時刻に9時間を加算してJSTに変換（ミリ秒単位で計算）
-	const jstTime = date.getTime() + (9 * 60 * 60 * 1000);
-	const jstDate = new Date(jstTime);
-
-	// 日本時間の年月日を取得して、新しいDateオブジェクトを作成
-	return new Date(Date.UTC(
-		jstDate.getUTCFullYear(),
-		jstDate.getUTCMonth(),
-		jstDate.getUTCDate()
-	));
-}
-
-function calculateSeasonCount(dateTimeJST) {
-	// 基準日からの月数を計算
-	const baseYear = BASE_DATE.getUTCFullYear();
-	const baseMonth = BASE_DATE.getUTCMonth();
-
-	const currentYear = dateTimeJST.getUTCFullYear();
-	const currentMonth = dateTimeJST.getUTCMonth();
-
-	// 経過した月数を計算
-	const monthsDiff = (currentYear - baseYear) * 12 + (currentMonth - baseMonth);
-
-	// 偶数月の数を計算（基準月を0として）
-	const evenMonthsPassed = Math.floor(monthsDiff / 2);
-
-	// 現在のカウントを計算
-	return BASE_COUNT + evenMonthsPassed;
-}
+import { getWikiNanodaPageUrl } from "./seesaawiki";
+import { calculateSeasonCount, getJSTDate } from "./dojo-season";
 
 async function handleRequest(request, env) {
-	// 現在の日本時間を取得
-	const currentJST = getJSTDate(new Date());
-	const currentCount = calculateSeasonCount(currentJST);
+	const url = new URL(request.url);
+	const path = url.pathname;
 
-	// URLを組み立て
-	const targetUrl = `https://seesaawiki.jp/kemono_friends3_5ch/d/%a5%b7%a1%bc%a5%b5%a1%bc%a5%d0%a5%eb%c6%bb%be%ec%a1%ca%a6%c22%2d${currentCount}%a1%cb`;
+	// /dojoへのアクセスを処理
+	if (path === '/dojo') {
+		// 現在の日本時間を取得
+		const currentJST = getJSTDate(new Date());
+		const currentCount = calculateSeasonCount(currentJST);
 
-	// デバッグ情報をコンソールに出力
-	console.log({
-		currentJST: currentJST.toISOString(),
-		currentJSTYear: currentJST.getUTCFullYear(),
-		currentJSTMonth: currentJST.getUTCMonth(),
-		baseYear: BASE_DATE.getUTCFullYear(),
-		baseMonth: BASE_DATE.getUTCMonth(),
-		currentCount,
-		targetUrl
+		// 道場ページへリダイレクト
+		const dojoUrl = getWikiNanodaPageUrl(`シーサーバル道場（β2-${currentCount}）`);
+		return Response.redirect(dojoUrl, 302);
+	}
+
+	// パスからページ名を抽出（先頭の/を除去）
+	const pageName = path.substring(1);
+
+	if (pageName) {
+		// ページ名が指定されている場合、EUC-JPに変換してリダイレクト
+		const decodedPageName = decodeURIComponent(pageName);
+		const targetUrl = getWikiNanodaPageUrl(decodedPageName);
+
+		return Response.redirect(targetUrl, 302);
+	}
+
+	// デフォルトの処理（ルートアクセスなど）
+	return new Response('リダイレクト先が指定されていません。URLにページ名を指定してください。', {
+		status: 400,
+		headers: { 'Content-Type': 'text/plain; charset=utf-8' }
 	});
-
-	// リダイレクト応答を返す
-	return Response.redirect(targetUrl, 302);
 }
 
 export default {

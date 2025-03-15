@@ -1,5 +1,5 @@
 {
-  "name": "dojo-redirect",
+  "name": "wiki-redirect",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -14,5 +14,8 @@
     "jest": "^29.7.0",
     "wrangler": "^3.60.3"
   },
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "encoding-japanese": "^2.2.0"
+  }
 }
