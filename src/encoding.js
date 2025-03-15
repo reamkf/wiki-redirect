@@ -39,12 +39,23 @@ export function encodeEUCJP(input) {
  * @returns デコードされた文字列
  */
 export function decodeEUCJP(input) {
-	return new TextDecoder("euc-jp").decode(
-		Uint8Array.from(
-			input
-				.split("%")
-				.filter(Boolean)
-				.map(hex => parseInt(hex, 16))
-		)
-	);
+	// %xxの形式の文字列を抽出してバイト配列に変換
+	const bytes = [];
+	let i = 0;
+
+	while (i < input.length) {
+		if (input[i] === '%' && i + 2 < input.length) {
+			// %xxの形式を16進数として解析
+			const hex = input.substring(i + 1, i + 3);
+			bytes.push(parseInt(hex, 16));
+			i += 3;
+		} else {
+			// %xx形式でない文字はそのままバイトコードに変換
+			bytes.push(input.charCodeAt(i));
+			i++;
+		}
+	}
+
+	// バイト配列をEUC-JPとしてデコード
+	return new TextDecoder("euc-jp").decode(new Uint8Array(bytes));
 }

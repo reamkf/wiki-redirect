@@ -12,6 +12,8 @@ describe('encodeEUCJP', () => {
 	test('アルファベットのエンコード', () => {
 		const original = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
 		const encoded = encodeEUCJP(original);
+		const decoded = decodeEUCJP(encoded);
 		expect(encoded).toBe(original);
+		expect(decoded).toBe(original);
 	});
 });
