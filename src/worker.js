@@ -28,9 +28,13 @@ async function handleRequest(request, env) {
 	}
 
 	// デフォルトの処理（ルートアクセスなど）
-	return new Response('リダイレクト先が指定されていません。URLにページ名を指定してください。', {
+	return new Response(`
+リダイレクト先が指定されていません。<br><br>
+<a href="/dojo">/dojo</a> にアクセスすると最新の道場ページへリダイレクトされます。<br>
+その他の任意の文字列を指定するとそのページ名を持つページへリダイレクトされます。
+`, {
 		status: 400,
-		headers: { 'Content-Type': 'text/plain; charset=utf-8' }
+		headers: { 'Content-Type': 'text/html; charset=utf-8' }
 	});
 }
 
