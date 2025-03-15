@@ -1,28 +1,15 @@
 # wiki-redirect
 
-シーサーバル道場のWikiページへの自動リダイレクトを行うCloudflare Workerアプリケーションです。<br>
-https://wiki-redirect.reamkf-strcn.workers.dev/
+https://seesaawiki.jp/kemono_friends3_5ch/ のページへのリダイレクトを行うCloudflare Workerアプリケーションです。
 
-## 機能概要
-
-- 2020年8月1日を基準日として、2ヶ月ごとに更新されるシーサーバル道場のWikiページへ自動的にリダイレクトします
-- リダイレクト先のURLは自動的に計算され、常に最新のシーズンのページへリダイレクトします
-- JST（日本標準時）に基づいて計算を行います
+- 最新の道場ページへのリダイレクト: https://wiki-redirect.reamkf-strcn.workers.dev/dojo
+- 任意ページへのリダイレクト: https://wiki-redirect.reamkf-strcn.workers.dev/任意のページ名
 
 ## 技術仕様
 
 - Cloudflare Workersを使用
 - Node.js環境で開発
 - Jest によるテスト環境を整備
-
-### 主要な計算ロジック
-
-- 基準日: 2020年8月1日（UTC）
-- 基準カウント: 2
-- シーズンカウントの計算方法:
-  - 基準日からの経過月数を計算
-  - 2ヶ月ごとにカウントを1増加
-  - 現在のカウント = 基準カウント + 経過した偶数月の数
 
 ## 開発環境のセットアップ
 `npm`の代わりに`pnpm`も使用可能です。
