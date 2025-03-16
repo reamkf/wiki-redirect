@@ -1,7 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
 import UrlWithCopyButton from './components/url-with-copy-button';
-import CustomCode from '../components/custom-code';
 
 export default function About() {
 	const [pageName, setPageName] = useState('');
@@ -35,17 +34,8 @@ export default function About() {
 					</p>
 				</section>
 
-				<section className="my-8">
+				<section className="my-8 space-y-4">
 					<h2 className="text-2xl font-semibold mb-4">使用可能なURL</h2>
-					<ul className="space-y-2 list-disc list-inside">
-						<li><a href='/dojo'><CustomCode>/dojo</CustomCode></a> : 最新の道場ページへリダイレクト</li>
-						<li><CustomCode>/page/ページ名</CustomCode> : 指定したページへリダイレクト</li>
-						<li><CustomCode>/add/ページ名</CustomCode> : 新しいページの作成ページへリダイレクト</li>
-					</ul>
-				</section>
-
-				{/* リンク生成ツール */}
-				<section className="space-y-6">
 					<div>
 						<label htmlFor="pageName" className="block font-medium mb-2">
 							ページ名を入力
@@ -58,15 +48,15 @@ export default function About() {
 								const value = (e.target as HTMLInputElement).value;
 								setPageName(value);
 							}}
-							className="w-full p-2 border rounded"
+							className="w-full p-2 border-gray-400 border rounded"
 							placeholder="例: ウミネコ"
 						/>
 					</div>
-					<div className="space-y-4">
-						<UrlWithCopyButton url={`${dojoPath}`}/>
-						<UrlWithCopyButton url={`${pagePath}`}/>
-						<UrlWithCopyButton url={`${addPath}`}/>
-					</div>
+					<ul className="space-y-2 list-disc list-inside">
+						<li className="flex items-center">•<UrlWithCopyButton url={`${dojoPath}`}/> <span className="ml-2">: 最新の道場ページ</span></li>
+						<li className="flex items-center">•<UrlWithCopyButton url={`${pagePath}`}/> <span className="ml-2">: 指定したページ</span></li>
+						<li className="flex items-center">•<UrlWithCopyButton url={`${addPath}`}/> <span className="ml-2">: 新規作成ページ</span></li>
+					</ul>
 				</section>
 			</div>
 		</div>

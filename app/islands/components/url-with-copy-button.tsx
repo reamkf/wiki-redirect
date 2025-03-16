@@ -61,9 +61,9 @@ export function CopyButton({ url }: { url: string }) {
 			title="URLをコピー"
 		>
 			<IconComponent className="size-6" />
-			<span className="ml-1 text-sm text-gray-500">
+			{/* <span className="ml-1 text-sm text-gray-500">
 				{isCopied ? 'コピーしました' : 'コピー'}
-			</span>
+			</span> */}
 		</button>
 	);
 }
@@ -79,10 +79,10 @@ export default function UrlWithCopyButton({ url, text }: UrlWithCopyButtonProps)
 	}
 	return (
 		<div className="flex items-center bg-gray-50 rounded-lg m-0">
+			<CopyButton url={url} />
 			<a href={url} rel="noopener noreferrer">
 				<CustomCode>{text}</CustomCode>
 			</a>
-			<CopyButton url={url} />
 		</div>
 	);
 }
