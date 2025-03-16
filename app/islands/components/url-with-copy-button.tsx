@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import CustomCode from '../../components/custom-code';
 import { ClipboardDocumentIcon, ClipboardDocumentCheckIcon } from '@heroicons/react/24/outline';
+
 function copyToClipboard(text: string): Promise<void> {
 	return navigator.clipboard.writeText(text);
 };
@@ -15,8 +16,32 @@ export function CopyButton({ url }: { url: string }) {
 		if(url.startsWith('/')) {
 			url = `${baseUrl}${url}`;
 		}
-		await copyToClipboard(url);
-		setIsCopied(true);
+
+		try {
+			await copyToClipboard(url);
+			setIsCopied(true);
+		} catch (error) {
+			console.error('クリップボードへのコピーに失敗しました:', error);
+			// iOSのSafariなどでは手動でコピーするための代替手段を提供
+			const textArea = document.createElement('textarea');
+			textArea.value = url;
+			textArea.style.position = 'fixed';
+			textArea.style.opacity = '0';
+			document.body.appendChild(textArea);
+			textArea.focus();
+			textArea.select();
+
+			try {
+				document.execCommand('copy');
+				setIsCopied(true);
+			} catch (err) {
+				console.error('代替コピー方法も失敗しました:', err);
+				alert('URLをコピーできませんでした。手動でコピーしてください: ' + url);
+			}
+
+			document.body.removeChild(textArea);
+		}
+
 		setTimeout(() => {
 			setIsCopied(false);
 		}, 2000);

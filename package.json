@@ -1,7 +1,7 @@
 {
 	"name": "wiki-redirect",
 	"scripts": {
-		"dev": "vite dev",
+		"dev": "vite dev --host",
 		"build": "vite build --mode client && vite build",
 		"start": "vite build --mode client && bun run dist/index.js",
 		"deploy": "wrangler deploy dist/index.js",
