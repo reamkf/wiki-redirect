@@ -46,7 +46,7 @@ export default function About() {
 								setPageName(value);
 							}}
 							className="w-full p-2 border rounded"
-							placeholder="例: getting-started"
+							placeholder="例: ウミネコ"
 						/>
 					</div>
 					<div className="space-y-4">
