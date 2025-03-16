@@ -25,8 +25,11 @@ export function CopyButton({ url }: { url: string }) {
 			// iOSのSafariなどでは手動でコピーするための代替手段を提供
 			const textArea = document.createElement('textarea');
 			textArea.value = url;
+			textArea.style.display = 'none';
 			textArea.style.position = 'fixed';
 			textArea.style.opacity = '0';
+			textArea.style.left = '-1000px';
+			textArea.style.top = '-1000px';
 			document.body.appendChild(textArea);
 			textArea.focus();
 			textArea.select();
