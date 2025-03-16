@@ -2,7 +2,8 @@
 	"name": "wiki-redirect",
 	"scripts": {
 		"dev": "vite dev",
-		"build": "vite build",
+		"build": "vite build --mode client && vite build",
+		"deploy": "wrangler deploy",
 		"lint": "eslint app",
 		"lint:fix": "eslint app --fix",
 		"test": "vitest run"
