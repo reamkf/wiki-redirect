@@ -11,11 +11,11 @@ export default function About() {
 
 	return (
 		<div className="p-0 sm:p-8">
-			<div className="max-w-4xl p-6 sm:p-8 mx-auto bg-gray-50 sm:rounded-lg">
-				<h1 className="text-4xl font-bold mb-4">なのだWikiリダイレクト</h1>
+			<div className="max-w-4xl p-6 sm:p-8 mx-auto space-y-4 bg-gray-50 sm:rounded-lg">
+				<h1 className="text-4xl font-bold">なのだWikiリダイレクト</h1>
 
 				{/* サービス説明 */}
-				<section className="mb-8 space-y-1">
+				<section className="space-y-1">
 					<p>
 						<a
 							className='text-green-500 font-bold'
@@ -34,10 +34,10 @@ export default function About() {
 					</p>
 				</section>
 
-				<section className="my-8 space-y-4">
-					<h2 className="text-2xl font-semibold mb-4">使用可能なURL</h2>
+				<section className="space-y-4">
+					<h2 className="text-2xl font-semibold">使用可能なURL</h2>
 					<div>
-						<label htmlFor="pageName" className="block font-medium mb-2">
+						<label htmlFor="pageName" className="block font-medium">
 							ページ名を入力
 						</label>
 						<input
