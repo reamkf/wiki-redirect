@@ -3,7 +3,8 @@
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build --mode client && vite build",
-		"deploy": "wrangler deploy",
+		"start": "vite build --mode client && bun run dist/index.js",
+		"deploy": "wrangler deploy dist/index.js",
 		"lint": "eslint app",
 		"lint:fix": "eslint app --fix",
 		"test": "vitest run"
