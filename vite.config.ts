@@ -5,4 +5,7 @@ export default defineConfig({
   plugins: [
     honox(),
   ],
+  ssr: {
+    external: ["encoding-japanese"],
+  },
 })

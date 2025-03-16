@@ -1,4 +1,4 @@
-import * as Encoding from 'encoding-japanese';
+import Encoding from 'encoding-japanese';
 
 /**
  * 文字列をEUC-JPでエンコードし、URLエンコードする関数
