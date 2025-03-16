@@ -8,7 +8,7 @@ createClient({
 		hydrateRoot(root, elem)
 	},
 	// @ts-expect-error createElement is not typed correctly
-	createElement: async (type: any, props: any) => {
+	createElement: async (type: string | React.JSXElementConstructor<unknown>, props: React.Attributes) => {
 		const { createElement } = await import('react')
 		return createElement(type, props)
 	}
