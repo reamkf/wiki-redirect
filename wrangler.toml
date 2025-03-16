@@ -1,6 +1,6 @@
 name = "wiki-redirect"
 main = "src/worker.js"
-compatibility_date = "2024-04-01"
+compatibility_date = "2025-03-16"
 compatibility_flags = ["nodejs_compat"]
 pages_build_output_dir = "./dist"
 workers_dev = true

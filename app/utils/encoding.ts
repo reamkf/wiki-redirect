@@ -5,7 +5,7 @@ import * as Encoding from 'encoding-japanese';
  * @param input エンコードする文字列
  * @returns EUC-JPでエンコードされURLエンコードされた文字列
  */
-export function encodeEUCJP(input) {
+export function encodeEUCJP(input: string): string {
 	// 文字列をEUC-JPにエンコード
 	const eucBytes = Encoding.convert(Encoding.stringToCode(input), {
 		to: 'EUCJP',
@@ -38,7 +38,7 @@ export function encodeEUCJP(input) {
  * @param input デコードする文字列
  * @returns デコードされた文字列
  */
-export function decodeEUCJP(input) {
+export function decodeEUCJP(input: string): string {
 	// %xxの形式の文字列を抽出してバイト配列に変換
 	const bytes = [];
 	let i = 0;
@@ -57,5 +57,11 @@ export function decodeEUCJP(input) {
 	}
 
 	// バイト配列をEUC-JPとしてデコード
-	return new TextDecoder("euc-jp").decode(new Uint8Array(bytes));
+	// encoding-japaneseを使用してデコード
+	const decoded = Encoding.convert(bytes, {
+		to: 'UNICODE',
+		from: 'EUCJP'
+	});
+
+	return Encoding.codeToString(decoded);
 }
