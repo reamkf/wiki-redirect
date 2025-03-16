@@ -1,4 +1,5 @@
 import { encodeEUCJP, decodeEUCJP } from '../encoding';
+import { describe, test, expect } from 'vitest';
 
 describe('encodeEUCJP', () => {
 	test('ひらがなのエンコード・デコード', () => {

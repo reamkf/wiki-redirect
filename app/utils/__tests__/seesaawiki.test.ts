@@ -1,4 +1,5 @@
 import { getWikiNanodaPageUrl } from '../seesaawiki';
+import { describe, test, expect } from 'vitest';
 
 const testCases = [
 	{
