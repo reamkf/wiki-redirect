@@ -6,6 +6,7 @@
     "lint:fix": "eslint app --fix"
   },
   "dependencies": {
+    "@heroicons/react": "^2.2.0",
     "@tailwindcss/vite": "^4.0.14",
     "encoding-japanese": "^2.2.0",
     "hono": "^4.7.4",
@@ -21,6 +22,7 @@
     "@types/bun": "latest",
     "@types/encoding-japanese": "^2.2.1",
     "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
     "@typescript-eslint/eslint-plugin": "^8.26.1",
     "@typescript-eslint/parser": "^8.26.1",
     "eslint": "^9.22.0",

@@ -1,3 +1,3 @@
-import HomePage from "../components/HomePage"
+import About from "../islands/about"
 
-export default HomePage
+export default About
