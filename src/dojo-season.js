@@ -31,3 +31,8 @@ export function calculateSeasonCount(dateTimeJST) {
 	// 現在のカウントを計算
 	return BASE_COUNT + evenMonthsPassed;
 }
+
+export function getCurrentSeasonCount() {
+	const currentJST = getJSTDate(new Date());
+	return calculateSeasonCount(currentJST);
+}

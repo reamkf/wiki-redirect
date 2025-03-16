@@ -1,5 +1,5 @@
-import { getWikiNanodaPageUrl } from "./seesaawiki";
-import { calculateSeasonCount, getJSTDate } from "./dojo-season";
+import { getWikiNanodaPageUrl, getWikiNanodaPageAddUrl } from "./seesaawiki";
+import { getCurrentSeasonCount } from "./dojo-season";
 
 async function handleRequest(request, env) {
 	const url = new URL(request.url);
@@ -7,24 +7,29 @@ async function handleRequest(request, env) {
 
 	// /dojoへのアクセスを処理
 	if (path === '/dojo') {
-		// 現在の日本時間を取得
-		const currentJST = getJSTDate(new Date());
-		const currentCount = calculateSeasonCount(currentJST);
-
-		// 道場ページへリダイレクト
+		const currentCount = getCurrentSeasonCount();
 		const dojoUrl = getWikiNanodaPageUrl(`シーサーバル道場（β2-${currentCount}）`);
 		return Response.redirect(dojoUrl, 302);
-	}
+	} else if (path.startsWith('/page/')) {
+		const pageName = path.substring(6);
 
-	// パスからページ名を抽出（先頭の/を除去）
-	const pageName = path.substring(1);
+		if (pageName) {
+			// ページ名が指定されている場合、EUC-JPに変換してリダイレクト
+			const decodedPageName = decodeURIComponent(pageName);
+			const targetUrl = getWikiNanodaPageUrl(decodedPageName);
 
-	if (pageName) {
-		// ページ名が指定されている場合、EUC-JPに変換してリダイレクト
-		const decodedPageName = decodeURIComponent(pageName);
-		const targetUrl = getWikiNanodaPageUrl(decodedPageName);
+			return Response.redirect(targetUrl, 302);
+		}
+	} else if (path.startsWith('/add/')) {
+		const pageName = path.substring(5);
 
-		return Response.redirect(targetUrl, 302);
+		if (pageName) {
+			// ページ名が指定されている場合、EUC-JPに変換してリダイレクト
+			const decodedPageName = decodeURIComponent(pageName);
+			const targetUrl = getWikiNanodaPageAddUrl(decodedPageName);
+
+			return Response.redirect(targetUrl, 302);
+		}
 	}
 
 	// デフォルトの処理（ルートアクセスなど）

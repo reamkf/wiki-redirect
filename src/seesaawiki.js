@@ -18,3 +18,9 @@ export function getWikiNanodaPageUrl(pageName) {
 	pageName = encodeEUCJP(pageName)
 	return "https://seesaawiki.jp/kemono_friends3_5ch/d/" + pageName;
 }
+
+export function getWikiNanodaPageAddUrl(pageName){
+	pageName = convertCharRef(pageName)
+	pageName = encodeEUCJP(pageName)
+	return "https://seesaawiki.jp/kemono_friends3_5ch/e/add?pagename=" + pageName;
+}
