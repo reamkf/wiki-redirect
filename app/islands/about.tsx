@@ -35,7 +35,6 @@ export default function About() {
 				</section>
 
 				<section className="space-y-4">
-					<h2 className="text-2xl font-semibold">使用可能なURL</h2>
 					<div>
 						<label htmlFor="pageName" className="block font-medium">
 							ページ名を入力
