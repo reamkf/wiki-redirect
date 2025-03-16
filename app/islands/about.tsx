@@ -16,9 +16,14 @@ export default function About() {
 				<h1 className="text-4xl font-bold text-green-500 mb-4">なのだWikiリダイレクト</h1>
 
 				{/* サービス説明 */}
-				<section className="mb-8">
-					Seesaa WikiではURLのエンコードにEUC-JPを使用しているため、Discordなどに貼り付けた際に不具合が生じたり、ブラウザーの検索エンジンに登録できない問題があります。
-					このサイトは、UTF-8でURLを受け付け、EUC-JPに変換してリダイレクトします。
+				<section className="mb-8 space-y-2">
+					<p>
+						アプリ版けものフレンズ３wikiなのだ！(<a href='https://seesaawiki.jp/kemono_friends3_5ch/'>https://seesaawiki.jp/kemono_friends3_5ch/</a>)のページへリダイレクトするサイトです。
+					</p>
+					<p>
+						Seesaa WikiではURLのエンコードにEUC-JPを使用しているため、Discordなどに貼り付けた際に不具合が生じたり、ブラウザーの検索エンジンに登録できなかったりします。
+						このサイトは、UTF-8でURLを受け付け、EUC-JPに変換してリダイレクトします。
+					</p>
 				</section>
 
 				<section className="my-8">
