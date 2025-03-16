@@ -3,7 +3,7 @@ import { useState } from 'react';
 import UrlWithCopyButton from './components/url-with-copy-button';
 
 export default function About() {
-	const [pageName, setPageName] = useState('');
+	const [pageName, setPageName] = useState('ページ名');
 
 	const dojoPath = `/dojo`;
 	const pagePath = `/page/${pageName}`;
