@@ -1,5 +1,5 @@
 name = "wiki-redirect"
-main = "src/worker.js"
+main = "dist/index.js"
 compatibility_date = "2025-03-16"
 workers_dev = true
 compatibility_flags = ["nodejs_compat"]
