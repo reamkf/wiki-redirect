@@ -12,8 +12,8 @@ export default function About() {
 	const addPath = `/add/${pageName}`;
 
 	return (
-		<div className="p-8">
-			<div className="max-w-4xl p-8 mx-auto bg-gray-50 rounded-lg">
+		<div className="p-0 md:p-8">
+			<div className="max-w-4xl p-6 md:p-8 mx-auto bg-gray-50 md:rounded-lg">
 				<h1 className="text-4xl font-bold text-green-500 mb-4">なのだWikiリダイレクト</h1>
 
 				{/* サービス説明 */}
