@@ -1,5 +1,4 @@
 import { createRoute } from 'honox/factory'
-
 import { getWikiNanodaPageUrl } from '../../utils/seesaawiki';
 import { getCurrentSeasonCount } from '../../utils/dojo-season';
 
