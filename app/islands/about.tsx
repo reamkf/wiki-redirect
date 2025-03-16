@@ -5,7 +5,6 @@ import CustomCode from '../components/custom-code';
 
 export default function About() {
 	const [pageName, setPageName] = useState('');
-	const baseUrl = import.meta.env.NEXT_PUBLIC_BASE_URL || 'https://wiki-redirect.reamkf-strcn.workers.dev';
 
 	const dojoPath = `/dojo`;
 	const pagePath = `/page/${pageName}`;
@@ -50,9 +49,9 @@ export default function About() {
 						/>
 					</div>
 					<div className="space-y-4">
-						<UrlWithCopyButton url={`${baseUrl}${dojoPath}`}/>
-						<UrlWithCopyButton url={`${baseUrl}${pagePath}`}/>
-						<UrlWithCopyButton url={`${baseUrl}${addPath}`}/>
+						<UrlWithCopyButton url={`${dojoPath}`}/>
+						<UrlWithCopyButton url={`${pagePath}`}/>
+						<UrlWithCopyButton url={`${addPath}`}/>
 					</div>
 				</section>
 			</div>
