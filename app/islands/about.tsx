@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'hono/jsx';
 import UrlWithCopyButton from './components/url-with-copy-button';
+import CustomCode from '../components/custom-code';
 
 export default function About() {
 	const [pageName, setPageName] = useState('');
@@ -11,13 +12,13 @@ export default function About() {
 		setPageName(target.value);
 	};
 
-	const dojoUrl = `${baseUrl}/dojo`;
-	const pageUrl = `${baseUrl}/page/${pageName}`;
-	const addUrl = `${baseUrl}/add/${pageName}`;
+	const dojoPath = `/dojo`;
+	const pagePath = `/page/${pageName}`;
+	const addPath = `/add/${pageName}`;
 
 	return (
-		<div className="max-w-4xl mx-auto p-8">
-			<h1 className="text-4xl font-bold text-blue-500 mb-8">なのだWikiリダイレクト</h1>
+		<div className="max-w-4xl mx-auto p-8 m-8 bg-gray-50 rounded-lg">
+			<h1 className="text-4xl font-bold text-green-500 mb-8">なのだWikiリダイレクト</h1>
 
 			{/* サービス説明 */}
 			<section className="mb-12">
@@ -28,9 +29,9 @@ export default function About() {
 			<section className="my-7">
 				<h2 className="text-2xl font-semibold mb-4">使用可能なURL</h2>
 				<ul className="space-y-2 list-disc list-inside">
-					<li><code>/dojo</code> - 最新の道場ページへリダイレクト</li>
-					<li><code>/page/ページ名</code> - 指定したページへリダイレクト</li>
-					<li><code>/add/ページ名</code> - 新しいページの作成ページへリダイレクト</li>
+					<li><a href='/dojo'><CustomCode>/dojo</CustomCode></a> : 最新の道場ページへリダイレクト</li>
+					<li><CustomCode>/page/ページ名</CustomCode> : 指定したページへリダイレクト</li>
+					<li><CustomCode>/add/ページ名</CustomCode> : 新しいページの作成ページへリダイレクト</li>
 				</ul>
 			</section>
 
@@ -50,9 +51,9 @@ export default function About() {
 					/>
 				</div>
 				<div className="space-y-4">
-					<UrlWithCopyButton url={dojoUrl} />
-					<UrlWithCopyButton url={pageUrl} />
-					<UrlWithCopyButton url={addUrl} />
+					<UrlWithCopyButton url={dojoPath} text={`${baseUrl}${dojoPath}`}/>
+					<UrlWithCopyButton url={pagePath} text={`${baseUrl}${pagePath}`}/>
+					<UrlWithCopyButton url={addPath} text={`${baseUrl}${addPath}`}/>
 				</div>
 			</section>
 		</div>
