@@ -16,6 +16,7 @@ Seesaa WikiではURLのエンコードにEUC-JPを使用しているため、Dis
 - TailwindCSS
 - TypeScript
 - Bun
+- Cloudflare Workers
 
 ## 開発
 
