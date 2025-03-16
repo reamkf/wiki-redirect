@@ -18,7 +18,7 @@ export default function About() {
 				{/* サービス説明 */}
 				<section className="mb-8">
 					Seesaa WikiではURLのエンコードにEUC-JPを使用しているため、Discordなどに貼り付けた際に不具合が生じたり、ブラウザーの検索エンジンに登録できない問題があります。
-					このサービスは、UTF-8でURLを受け付け、EUC-JPに変換してリダイレクトします。
+					このサイトは、UTF-8でURLを受け付け、EUC-JPに変換してリダイレクトします。
 				</section>
 
 				<section className="my-8">
