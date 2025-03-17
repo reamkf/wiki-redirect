@@ -27,12 +27,9 @@ export default defineConfig(({ mode }) => {
 		}
 	} else {
 		return {
-			ssr: {
-				external: ['react', 'react-dom', 'encoding-japanese'],
-			},
 			plugins: [
 				honox({
-					devServer: { adapter},
+					devServer: { adapter },
 					client: {
 						input: ['/app/style.css'],
 					},
@@ -40,6 +37,9 @@ export default defineConfig(({ mode }) => {
 				tailwindcss(),
 				build(),
 			],
+			ssr: {
+				external: ['react', 'react-dom', 'encoding-japanese'],
+			},
 		}
 	}
 })

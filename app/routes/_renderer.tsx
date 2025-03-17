@@ -9,17 +9,17 @@ export default reactRenderer(({ children }) => {
 				<meta charSet='UTF-8' />
 				<meta name='viewport' content='width=device-width, initial-scale=1.0' />
 				{import.meta.env.PROD ? (
-					<link rel='stylesheet' href='/static/assets/style.css' />
+					<>
+						<link rel='stylesheet' href='/static/assets/style.css' />
+						<HasIslands>
+							<script type='module' src='/static/client.js'></script>
+						</HasIslands>
+					</>
 				) : (
-					<Link href='/app/style.css' rel='stylesheet' />
-				)}
-
-				{import.meta.env.PROD ? (
-					<HasIslands>
-						<script type='module' src='/static/client.js'></script>
-					</HasIslands>
-				) : (
-					<script type='module' src='/app/client.ts'></script>
+					<>
+						<Link rel='stylesheet' href='/app/style.css' />
+						<script type='module' src='/app/client.ts'></script>
+					</>
 				)}
 			</head>
 			<body>{children}</body>
