@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import CustomCode from '../../components/custom-code';
-import { ClipboardDocumentIcon, ClipboardDocumentCheckIcon } from '@heroicons/react/24/outline';
+import { ClipboardDocumentIcon, CheckIcon } from '@heroicons/react/24/outline';
 
 function copyToClipboard(text: string): Promise<void> {
 	return navigator.clipboard.writeText(text);
@@ -47,20 +47,18 @@ export function CopyButton({ url }: { url: string }) {
 
 		setTimeout(() => {
 			setIsCopied(false);
-		}, 2000);
+		}, 1000);
 	}
 
-	const IconComponent = isCopied
-		? ClipboardDocumentCheckIcon
-		: ClipboardDocumentIcon ;
+	const IconComponent = isCopied ? CheckIcon : ClipboardDocumentIcon ;
 
 	return (
 		<button
 			onClick={() => handleCopyButtonClick(url)}
-			className="ml-1 p-1 hover:bg-gray-200 rounded flex items-center"
+			className="mx-1 p-1 hover:bg-gray-200 rounded flex items-center"
 			title="URLをコピー"
 		>
-			<IconComponent className="size-6" />
+			<IconComponent className="size-6 text-gray-600" />
 			{/* <span className="ml-1 text-sm text-gray-500">
 				{isCopied ? 'コピーしました' : 'コピー'}
 			</span> */}
