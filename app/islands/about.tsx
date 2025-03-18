@@ -1,9 +1,10 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import UrlWithCopyButton from './components/url-with-copy-button';
 
 export default function About() {
-	const [pageName, setPageName] = useState('ページ名');
+	const [pageNameInput, setPageNameInput] = useState('')
+
+	const pageName = pageNameInput || 'ページ名';
 
 	const dojoPath = `/dojo`;
 	const pagePath = `/page/${pageName}`;
@@ -42,10 +43,10 @@ export default function About() {
 						<input
 							type="text"
 							id="pageName"
-							value={pageName}
+							value={pageNameInput}
 							onChange={(e) => {
 								const value = (e.target as HTMLInputElement).value;
-								setPageName(value);
+								setPageNameInput(value);
 							}}
 							className="w-full p-2 border-gray-400 border rounded"
 							placeholder="例: ウミネコ"
