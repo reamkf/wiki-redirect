@@ -8,6 +8,7 @@ export default reactRenderer(({ children }) => {
 			<head>
 				<meta charSet='UTF-8' />
 				<meta name='viewport' content='width=device-width, initial-scale=1.0' />
+				<title>なのだWikiリダイレクト</title>
 				{import.meta.env.PROD ? (
 					<>
 						<link rel='stylesheet' href='/static/assets/style.css' />
