@@ -24,3 +24,14 @@ export function getWikiNanodaPageAddUrl(pageName: string) {
 	pageName = encodeEUCJP(pageName)
 	return "https://seesaawiki.jp/kemono_friends3_5ch/e/add?pagename=" + pageName;
 }
+
+export async function getWikiNanodaPageEditUrl(pageName: string){
+	const pageUrl = getWikiNanodaPageUrl(pageName);
+	const response = await fetch(pageUrl);
+	if (!response.ok){
+		return null;
+	}
+	const html = await response.text();
+	const editUrl = html.match(/https:\/\/seesaawiki\.jp\/kemono_friends3_5ch\/e\/edit\?id=\d+/);
+	return editUrl ? editUrl[0] : null;
+}
