@@ -1,3 +1,5 @@
-import About from "../islands/about"
+import About from '../islands/about'
 
-export default About
+export default function Index() {
+	return <About />
+}
