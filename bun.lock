@@ -9,11 +9,11 @@
         "@hono/react-renderer": "^1.0.1",
         "@tailwindcss/vite": "^4.2.4",
         "encoding-japanese": "^2.2.0",
+        "seesaawiki-url": "git+https://github.com/reamkf/seesaawiki-url.git",
         "hono": "^4.12.18",
         "honox": "^0.1.55",
         "react": "^19.2.6",
         "react-dom": "^19.2.6",
-        "seesaawiki-url": "git+https://github.com/reamkf/seesaawiki-url.git",
         "tailwindcss": "^4.2.4",
       },
       "devDependencies": {
@@ -820,7 +820,7 @@
 
     "scheduler": ["scheduler@0.27.0", "", {}, "sha512-eNv+WrVbKu1f3vbYJT/xtiF5syA5HPIMtf9IgY/nKg0sWqzAUEvqY/xm7OcZc/qafLx/iO9FgOmeSAp4v5ti/Q=="],
 
-    "seesaawiki-url": ["seesaawiki-url@github:reamkf/seesaawiki-url#5b45f46", { "dependencies": { "encoding-japanese": "^2.2.0" } }, "reamkf-seesaawiki-url-5b45f46", "sha512-dC9UeqGjIfPy3PbXLJzMla0RJ3MOTy8haBOeiQjyZt5mgrLQDmd+3GDTvwX7Rj4oPVQJb6FWDBopzKBoWIHrJw=="],
+    "seesaawiki-url": ["seesaawiki-url@github:reamkf/seesaawiki-url#1d91569", { "dependencies": { "encoding-japanese": "^2.2.0" } }, "reamkf-seesaawiki-url-1d91569", "sha512-OhfEdvM/1c6RDNn+cI8MyQh/zsFigZ7IfoLEtNRe3bYLFMfaZ2QOnEH4G69da7bqKVLk1gj0OArTV9LthwBm1Q=="],
 
     "semver": ["semver@6.3.1", "", { "bin": { "semver": "bin/semver.js" } }, "sha512-BR7VvDCVHO+q2xBEWskxS6DJE1qRnb7DxzUrogb71CWoSficBxYsiAGd+Kl0mmq/MprG9yArRkyrQxTO6XjMzA=="],
 
