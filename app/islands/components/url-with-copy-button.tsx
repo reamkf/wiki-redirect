@@ -10,11 +10,9 @@ function copyToClipboard(text: string): Promise<void> {
 export function CopyButton({ url }: { url: string }) {
 	const [isCopied, setIsCopied] = useState(false);
 
-	const baseUrl = import.meta.env.NEXT_PUBLIC_BASE_URL || 'https://wiki-redirect.reamkf-strcn.workers.dev';
-
 	async function handleCopyButtonClick(url: string) {
 		if(url.startsWith('/')) {
-			url = `${baseUrl}${url}`;
+			url = new URL(url, window.location.origin).toString();
 		}
 
 		try {
