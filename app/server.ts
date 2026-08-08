@@ -1,7 +1,8 @@
 import { Hono } from 'hono'
-import { getPageAddUrl, getPageEditUrl, getPageHistoryUrl, getPageUrl } from 'seesaawiki-url'
+import { getPageAddUrl, getPageHistoryUrl, getPageUrl } from 'seesaawiki-url'
 import { getCurrentSeasonCount } from './utils/dojo-season'
 import { SEESAA_WIKI_BASE_URL } from './utils/seesaawiki-base-url'
+import { getPageEditUrl } from './utils/seesaawiki-edit-url'
 
 const app = new Hono()
 
