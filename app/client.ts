@@ -1,15 +1,16 @@
-// app/client.ts
-import { createClient } from 'honox/client'
+import './style.css'
+import { createRoot, hydrateRoot } from 'react-dom/client'
+import { createElement } from 'react'
+import About from './islands/about'
 
-createClient({
-	hydrate: async (elem, root) => {
-		const { hydrateRoot } = await import('react-dom/client')
-		// @ts-expect-error elem is not typed correctly
-		hydrateRoot(root, elem)
-	},
-	// @ts-expect-error createElement is not typed correctly
-	createElement: async (type: string | React.JSXElementConstructor<unknown>, props: React.Attributes) => {
-		const { createElement } = await import('react')
-		return createElement(type, props)
+const root = document.getElementById('root')
+
+if (root) {
+	const element = createElement(About)
+
+	if (import.meta.env.DEV) {
+		createRoot(root).render(element)
+	} else {
+		hydrateRoot(root, element)
 	}
-})
+}

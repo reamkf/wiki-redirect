@@ -10,7 +10,7 @@ Seesaa WikiではURLのエンコードにEUC-JPを使用しているため、Dis
 このサイトは、UTF-8でURLを受け付け、EUC-JPに変換してリダイレクトします。
 
 ## 技術スタック
-- HonoX
+- Hono
 - Vite
 - React
 - TailwindCSS

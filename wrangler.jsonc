@@ -1,14 +1,9 @@
 {
+	"$schema": "./node_modules/wrangler/config-schema.json",
 	"name": "wiki-redirect",
-	"main": "dist/index.js",
+	"main": "app/server.ts",
 	"compatibility_date": "2025-03-16",
-	"compatibility_flags": [
-		"nodejs_compat"
-	],
 	"workers_dev": true,
-	"assets": {
-		"directory": "dist"
-	},
 	"observability": {
 		"enabled": true
 	}
